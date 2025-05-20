@@ -94,30 +94,33 @@ if (browseLink) {
             showError('Please select an image first');
             return;
         }
-        
+        // Get and sanitize the description
+        const descriptionInput = document.getElementById('description');
+        let description = '';
+        if (descriptionInput) {
+            description = descriptionInput.value.trim().substring(0, 200);
+        }
         const formData = new FormData();
         formData.append('image', selectedFile);
-        
+        if (description.length > 0) {
+            formData.append('description', description);
+        }
         // Show loading state
         loading.style.display = 'flex';
         results.style.display = 'none';
         hideError();
         analyzeBtn.disabled = true;
-        
         try {
             const response = await fetch(`${BACKEND_URL}/analyze`, {
                 method: 'POST',
                 body: formData
             });
-            
             if (!response.ok) {
                 const error = await response.json();
                 throw new Error(error.error || 'Failed to analyze image');
             }
-            
             const data = await response.json();
             displayResults(data);
-            
         } catch (error) {
             showError(error.message || 'An error occurred while analyzing the image');
             console.error('Error:', error);
