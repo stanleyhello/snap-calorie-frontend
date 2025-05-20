@@ -39,7 +39,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     dropZone.addEventListener('drop', handleDrop, false);
-    dropZone.addEventListener('click', () => fileInput.click());
+    // Clicking anywhere in dropZone OR the browse link triggers file input
+const browseLink = document.getElementById('browseLink');
+dropZone.addEventListener('click', function(e) {
+    // Only trigger if not clicking the actual file input
+    if (e.target !== fileInput) fileInput.click();
+});
+if (browseLink) {
+    browseLink.addEventListener('click', function(e) {
+        e.stopPropagation();
+        fileInput.click();
+    });
+}
     
     fileInput.addEventListener('change', function(e) {
         if (e.target.files.length) {
