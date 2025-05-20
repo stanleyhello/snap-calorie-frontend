@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedFile = null;
     
     // Update this with your Render backend URL after deployment
-    const BACKEND_URL = 'http://localhost:5000'; // Change this to your Render URL after deployment
+    const BACKEND_URL = 'https://snap-calorie-backend.onrender.com'; // Change this to your Render URL after deployment
     
     // Drag and drop functionality
     ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
