@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snap Calorie - Food Analysis</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Snap Calorie</h1>
+            <p>Upload a photo of your meal to analyze its nutritional content</p>
+        </header>
+
+        <div class="upload-container" id="dropZone">
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+            <div class="upload-content">
+                <img src="https://cdn-icons-png.flaticon.com/512/2913/2913009.png" alt="Upload" class="upload-icon">
+                <p>Drag & drop your image here or <span class="browse-link">browse</span></p>
+                <p class="file-info" id="fileInfo">No file selected</p>
+            </div>
+        </div>
+
+        <button id="analyzeBtn" class="analyze-btn" disabled>Analyze Meal</button>
+
+        <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Analyzing your meal...</p>
+        </div>
+
+        <div class="results" id="results">
+            <h2>Nutritional Information</h2>
+            <div class="nutrition-grid">
+                <div class="nutrition-item">
+                    <div class="nutrition-value" id="calories">-</div>
+                    <div class="nutrition-label">Calories</div>
+                </div>
+                <div class="nutrition-item">
+                    <div class="nutrition-value" id="protein">-</div>
+                    <div class="nutrition-label">Protein (g)</div>
+                </div>
+                <div class="nutrition-item">
+                    <div class="nutrition-value" id="carbs">-</div>
+                    <div class="nutrition-label">Carbs (g)</div>
+                </div>
+                <div class="nutrition-item">
+                    <div class="nutrition-value" id="fat">-</div>
+                    <div class="nutrition-label">Fat (g)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="error" id="error"></div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
